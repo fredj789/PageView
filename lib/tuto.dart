@@ -8,77 +8,44 @@ class MyTest extends StatefulWidget {
 }
 
 class _MyTestState extends State<MyTest> {
-  List mobile = [
-    {
-      "name": "s20 ultra",
-      "screen": "6.1",
-      "cpu": "8 core",
-    },
-    {
-      "name": "s21 ultra",
-      "screen": "6.2",
-      "cpu": "8 core",
-    },
-    {
-      "name": "s10 ultra",
-      "screen": "6.3",
-      "cpu": "8 core",
-    },
-    {
-      "name": "iphone pro max",
-      "screen": "6.7",
-      "cpu": "9 core",
-    },
-    {
-      "name": "s20 ultra",
-      "screen": "6.1",
-      "cpu": "8 core",
-    },
-    {
-      "name": "s20 ultra",
-      "screen": "6.1",
-      "cpu": "8 core",
-    },
-    {
-      "name": "s20 ultra",
-      "screen": "6.1",
-      "cpu": "8 core",
-    },
-    {
-      "name": "s20 ultra",
-      "screen": "6.1",
-      "cpu": "8 core",
-    },
-    {
-      "name": "s20 ultra",
-      "screen": "6.1",
-      "cpu": "8 core",
-    },
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
         drawer: Drawer(),
         body: Container(
-          child: GridView.builder(
-              //scrollDirection: Axis.horizontal,
-              itemCount: mobile.length,
+            padding: EdgeInsets.all(10),
+            child: GridView(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-              ),
-              itemBuilder: (context, i) {
-                return Container(
-                  margin: EdgeInsets.all(10),
-                  child: ListTile(
-                    tileColor: Colors.red,
-                    title: Text("${mobile[i]['name']}"),
-                    subtitle: Text("Screen :${mobile[i]['screen']}"),
-                    trailing: Text("CPU :${mobile[i]['cpu']}"),
-                  ),
-                );
-              }),
-        ));
+                  crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
+              children: [
+                Container(
+                  child: Text("Container one "),
+                  height: 200,
+                  color: Colors.red,
+                ),
+                Container(
+                  child: Text("Container Two "),
+                  height: 200,
+                  color: Colors.blue,
+                ),
+                Container(
+                  child: Text("Container Twree "),
+                  height: 200,
+                  color: Colors.yellow,
+                ),
+                Container(
+                  child: Text("Container for "),
+                  height: 200,
+                  color: Colors.brown,
+                ),
+                Container(
+                  child: Text("Container five "),
+                  height: 200,
+                  color: Colors.red,
+                ),
+              ],
+            )));
   }
 }
 //scrollDirection: Axis.vertical,
