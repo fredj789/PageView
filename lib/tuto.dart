@@ -35,16 +35,26 @@ class _MyTestState extends State<MyTest> {
     return Scaffold(
         appBar: AppBar(),
         drawer: Drawer(),
-        body: ListView.builder(
-            padding: EdgeInsets.all(10),
-            itemCount: mobile.length, // Ici on va savoir les nombre d 'article
-            itemBuilder: (context, i) {
-              return ListTile(
-                title: Text("${mobile[i]['name']}"),
-                subtitle: Text("Screen :${mobile[i]['screen']}"),
-                trailing: Text("CPU :${mobile[i]['cpu']}"),
-              );
-            }));
+        body: Container(
+          child: ListView.separated(
+              separatorBuilder: (context, i) {
+                return Divider(
+                  color: Colors.red,
+                  height: 2,
+                  thickness: 2,
+                );
+              },
+              padding: EdgeInsets.all(10),
+              itemCount:
+                  mobile.length, // Ici on va savoir les nombre d 'article
+              itemBuilder: (context, i) {
+                return ListTile(
+                  title: Text("${mobile[i]['name']}"),
+                  subtitle: Text("Screen :${mobile[i]['screen']}"),
+                  trailing: Text("CPU :${mobile[i]['cpu']}"),
+                );
+              }),
+        ));
   }
 }
 //scrollDirection: Axis.vertical,
