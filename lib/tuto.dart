@@ -29,6 +29,31 @@ class _MyTestState extends State<MyTest> {
       "screen": "6.7",
       "cpu": "9 core",
     },
+    {
+      "name": "s20 ultra",
+      "screen": "6.1",
+      "cpu": "8 core",
+    },
+    {
+      "name": "s20 ultra",
+      "screen": "6.1",
+      "cpu": "8 core",
+    },
+    {
+      "name": "s20 ultra",
+      "screen": "6.1",
+      "cpu": "8 core",
+    },
+    {
+      "name": "s20 ultra",
+      "screen": "6.1",
+      "cpu": "8 core",
+    },
+    {
+      "name": "s20 ultra",
+      "screen": "6.1",
+      "cpu": "8 core",
+    },
   ];
   @override
   Widget build(BuildContext context) {
@@ -36,22 +61,21 @@ class _MyTestState extends State<MyTest> {
         appBar: AppBar(),
         drawer: Drawer(),
         body: Container(
-          child: ListView.separated(
-              separatorBuilder: (context, i) {
-                return Divider(
-                  color: Colors.red,
-                  height: 2,
-                  thickness: 2,
-                );
-              },
-              padding: EdgeInsets.all(10),
-              itemCount:
-                  mobile.length, // Ici on va savoir les nombre d 'article
+          child: GridView.builder(
+              //scrollDirection: Axis.horizontal,
+              itemCount: mobile.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
               itemBuilder: (context, i) {
-                return ListTile(
-                  title: Text("${mobile[i]['name']}"),
-                  subtitle: Text("Screen :${mobile[i]['screen']}"),
-                  trailing: Text("CPU :${mobile[i]['cpu']}"),
+                return Container(
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    tileColor: Colors.red,
+                    title: Text("${mobile[i]['name']}"),
+                    subtitle: Text("Screen :${mobile[i]['screen']}"),
+                    trailing: Text("CPU :${mobile[i]['cpu']}"),
+                  ),
                 );
               }),
         ));
