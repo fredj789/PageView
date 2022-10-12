@@ -8,57 +8,43 @@ class MyTest extends StatefulWidget {
 }
 
 class _MyTestState extends State<MyTest> {
+  List mobile = [
+    {
+      "name": "s20 ultra",
+      "screen": "6.1",
+      "cpu": "8 core",
+    },
+    {
+      "name": "s21 ultra",
+      "screen": "6.2",
+      "cpu": "8 core",
+    },
+    {
+      "name": "s10 ultra",
+      "screen": "6.3",
+      "cpu": "8 core",
+    },
+    {
+      "name": "iphone pro max",
+      "screen": "6.7",
+      "cpu": "9 core",
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
         drawer: Drawer(),
-        body: Container(
-            child: ListView(
-          scrollDirection: Axis.vertical, // pour activer le scroll
-          padding: EdgeInsets.all(10), // Espace dans le quatre cot
-          physics: BouncingScrollPhysics(), // faire le bombage
-          children: [
-            Text("Cars"),
-            Container(
-              height: 210,
-              child: ListView(
-                // physics: NeverScrollableScrollPhysics(), desable Scroll
-                // shrinkWrap: true,
-                children: [
-                  Container(
-                    child: Text("Cars  Mecedess"),
-                    color: Colors.red,
-                    height: 200,
-                  ),
-                  Container(
-                    child: Text("Cars BMW "),
-                    color: Colors.blue,
-                    height: 200,
-                  ),
-                ],
-              ),
-            ),
-            Text("Mobile"),
-            Container(
-              height: 210,
-              child: ListView(
-                children: [
-                  Container(
-                    child: Text("Samsung SX "),
-                    color: Colors.brown,
-                    height: 200, // OBLIGATION SANS HAUTEUR NE MARCHE PAS
-                  ),
-                  Container(
-                    child: Text("Nokia S20"),
-                    color: Colors.yellow,
-                    height: 200,
-                  )
-                ],
-              ),
-            )
-          ],
-        )));
+        body: ListView.builder(
+            padding: EdgeInsets.all(10),
+            itemCount: mobile.length, // Ici on va savoir les nombre d 'article
+            itemBuilder: (context, i) {
+              return ListTile(
+                title: Text("${mobile[i]['name']}"),
+                subtitle: Text("Screen :${mobile[i]['screen']}"),
+                trailing: Text("CPU :${mobile[i]['cpu']}"),
+              );
+            }));
   }
 }
 //scrollDirection: Axis.vertical,
