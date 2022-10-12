@@ -13,10 +13,10 @@ class _MyTestState extends State<MyTest> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Home Page"),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {},
-          ),
+          // leading: IconButton(
+          // icon: Icon(Icons.arrow_back),
+          //onPressed: () {},
+          //),
           actions: [
             IconButton(onPressed: () {}, icon: Icon(Icons.alarm)),
             IconButton(onPressed: () {}, icon: Icon(Icons.exit_to_app)),
@@ -27,10 +27,38 @@ class _MyTestState extends State<MyTest> {
           brightness: Brightness.dark, // le bar ou se trouve le batterie
           centerTitle: true, // le titre de app est au centre
         ),
-        //drawer: Drawer(),
+        drawer: Drawer(
+          child: Column(
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              const UserAccountsDrawerHeader(
+                  currentAccountPicture: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: Text("w"),
+                  ),
+                  accountName: Text("Jomaa Fredj"),
+                  accountEmail: Text("Email")),
+              const ListTile(
+                title: Text("Page Home "),
+                leading: Icon(Icons.home),
+              ),
+              const ListTile(
+                title: Text("Help "),
+                leading: Icon(Icons.help),
+              ),
+              const ListTile(
+                title: Text("LOGOUT "),
+                leading: Icon(Icons.login_outlined),
+              ),
+            ],
+          ),
+        ),
+
+        //endDrawer: Drawer(), modier laa position de drawer
         body: Container(
             padding: EdgeInsets.all(10),
             child: Text("My name is fredj jomaa")));
   }
 }
-//
+//leading et drawer ne marche pas ensemble
+//endDrawer elle est utulisser pour modifier la position de drawer
