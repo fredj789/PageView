@@ -8,25 +8,13 @@ class MyTest extends StatefulWidget {
 }
 
 class _MyTestState extends State<MyTest> {
+  GlobalKey<ScaffoldState> scafoldkey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Home Page"),
-          // leading: IconButton(
-          // icon: Icon(Icons.arrow_back),
-          //onPressed: () {},
-          //),
-          actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.alarm)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.exit_to_app)),
-          ],
-          elevation: 20, // l'ombre
-          shadowColor: Colors.red, // le couleur de l 'ombre
-          backgroundColor: Colors.green, // This color of the appbar
-          brightness: Brightness.dark, // le bar ou se trouve le batterie
-          centerTitle: true, // le titre de app est au centre
-        ),
+        drawerScrimColor: Colors.red,
+        key: scafoldkey,
+        appBar: AppBar(),
         drawer: Drawer(
           child: Column(
             // ignore: prefer_const_literals_to_create_immutables
@@ -55,9 +43,17 @@ class _MyTestState extends State<MyTest> {
         ),
 
         //endDrawer: Drawer(), modier laa position de drawer
-        body: Container(
+        body: Center(
+          child: Container(
             padding: EdgeInsets.all(10),
-            child: Text("My name is fredj jomaa")));
+            child: ElevatedButton(
+              onPressed: () {
+                scafoldkey.currentState!.openDrawer();
+              },
+              child: Text("open Drawer"),
+            ),
+          ),
+        ));
   }
 }
 //leading et drawer ne marche pas ensemble
