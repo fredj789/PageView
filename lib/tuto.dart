@@ -10,6 +10,7 @@ class MyTest extends StatefulWidget {
 class _MyTestState extends State<MyTest> {
   @override
   Widget build(BuildContext context) {
+    List user = ["Aman allah", "Fredj ", "Molka", "Fatma"];
     return Scaffold(
         appBar: AppBar(),
         drawer: Drawer(),
@@ -18,47 +19,15 @@ class _MyTestState extends State<MyTest> {
             child: GridView(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
-              children: [
-                Container(
-                  child: Text("Container one "),
-                  height: 200,
+              children: List.generate(user.length, (index) {
+                // LE NOMBRE DE CONTAINNER
+                return Container(
+                  child: Text("${user[index]}"),
                   color: Colors.red,
-                ),
-                Container(
-                  child: Text("Container Two "),
-                  height: 200,
-                  color: Colors.blue,
-                ),
-                Container(
-                  child: Text("Container Twree "),
-                  height: 200,
-                  color: Colors.yellow,
-                ),
-                Container(
-                  child: Text("Container for "),
-                  height: 200,
-                  color: Colors.brown,
-                ),
-                Container(
-                  child: Text("Container five "),
-                  height: 200,
-                  color: Colors.red,
-                ),
-              ],
+                  height: 100,
+                );
+              }),
             )));
   }
 }
-//scrollDirection: Axis.vertical,
-//padding: EdgeInsets.all(10),
-//reverse: false, //reverser l 'ordre  si true
-//physics: BouncingScrollPhysics(), // scrol  elle bombe
-//children: [
-//ext("Wael"),
-
-//Exemple1: on va ajouter
-//Container(
-//height: 200, //tres important
-// child: ListView(
-//physics: NeverScrollableScrollPhysics(), //tres important
-//children: [],
-//),
+//Liste Generate ==> Loop LIKE WHILE FOR DO  WHILE
