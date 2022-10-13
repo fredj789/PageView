@@ -8,89 +8,66 @@ class MyTest extends StatefulWidget {
 }
 
 class _MyTestState extends State<MyTest> {
+  int selectedindex = 0;
+  List<Widget> widgetPages = [
+    Text(
+      "page 1",
+      style: TextStyle(fontSize: 40),
+    ),
+    PageOne(),
+  ];
+  @override
+  //cette function est obligatoire utulisse lorsque on entre a l'application  elle  est obligatooirement utulisser  dans statefull
+  void initState() {
+    print("Wolcom");
+    // TODO: implement initState
+    super.initState();
+  }
+
+  Widget build(BuildContext context) {
+    // cette nombre est identique au nombre de  whidget tabBar View
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Home Page"),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.black,
+            backgroundColor: Colors.red,
+            selectedLabelStyle: TextStyle(fontSize: 20),
+            selectedFontSize: 10,
+            currentIndex: selectedindex, // precisser le bottom active
+            onTap: (index) {
+              setState(() {
+                selectedindex = index;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                label: "Wedget one",
+                icon: Icon(Icons.home),
+              ),
+              BottomNavigationBarItem(
+                  label: "Wedget Two", icon: Icon(Icons.contact_emergency)),
+            ]),
+        body: widgetPages.elementAt(selectedindex));
+  }
+}
+
+class PageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length:
-            3, // cette nombre est identique au nombre de  whidget tabBar View
-        child: Scaffold(
-            appBar: AppBar(
-              title: Text("Home Page"),
-              bottom: TabBar(
-                  //isscroller permet de activer le scroll dans app bar
-                  isScrollable: true,
-                  // le couleur de trais tab bar
-                  indicatorColor: Colors.white,
-                  // this size trait  for Tab bar
-                  indicatorWeight: 2,
-                  // LE COULEUR DE LABEL WHGDGET
-                  labelColor: Colors.white,
-                  //indicatorPadding: EdgeInsets.all(5),
-                  labelStyle: TextStyle(fontSize: 12),
-                  tabs: [
-                    // le nombre de tab elle sera egal au nombre de whidget
-                    Tab(
-                      child: Text("Widget one"),
-                      icon: Icon(Icons.person),
-                    ),
-                    Tab(
-                      child: Text("Widget Twe"),
-                      icon: Icon(Icons.home),
-                    ),
-                    Tab(
-                      child: Text("Widget Tree"),
-                      icon: Icon(Icons.perm_camera_mic),
-                    ),
-                    Tab(
-                      child: Text("Widget for"),
-                      icon: Icon(Icons.percent_sharp),
-                    ),
-                  ]),
-            ),
-            drawer: Drawer(),
-            body: TabBarView(
-              children: [
-                Container(
-                  width: double.infinity,
-                  color: Colors.red,
-                  child: Column(children: [
-                    Text("Text 1"),
-                    Text("Text 2"),
-                    Text("Text 3"),
-                    Text("Text 2"),
-                  ]),
-                ),
-                Container(
-                  width: double.infinity,
-                  color: Colors.blue,
-                  child: Column(children: [
-                    Text("Text 3"),
-                    Text("Text 4"),
-                    Text("Text 5"),
-                    Text("Text 6"),
-                  ]),
-                ),
-                Container(
-                  width: double.infinity,
-                  color: Colors.brown,
-                  child: Column(children: [
-                    Text("Text 3"),
-                    Text("Text 4"),
-                    Text("Text 5"),
-                    Text("Text 6"),
-                  ]),
-                ),
-                Container(
-                  width: double.infinity,
-                  color: Colors.white,
-                  child: Column(children: [
-                    Text("Text 3"),
-                    Text("Text 4"),
-                    Text("Text 5"),
-                    Text("Text 6"),
-                  ]),
-                ),
-              ],
-            )));
+    return Container(
+        child: Column(
+      children: [
+        Text("Text Tes"),
+        Text("Text Tes"),
+        Text("Text Tes"),
+        Text("Text Tes"),
+        Text("Text Tes"),
+        Text("Text Tes"),
+        Text("Text Tes"),
+      ],
+    ));
   }
 }
