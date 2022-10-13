@@ -8,53 +8,39 @@ class MyTest extends StatefulWidget {
 }
 
 class _MyTestState extends State<MyTest> {
-  GlobalKey<ScaffoldState> scafoldkey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        drawerScrimColor: Colors.red,
-        key: scafoldkey,
-        appBar: AppBar(),
-        drawer: Drawer(
-          child: Column(
-            // ignore: prefer_const_literals_to_create_immutables
-            children: [
-              const UserAccountsDrawerHeader(
-                  currentAccountPicture: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Text("w"),
-                  ),
-                  accountName: Text("Jomaa Fredj"),
-                  accountEmail: Text("Email")),
-              const ListTile(
-                title: Text("Page Home "),
-                leading: Icon(Icons.home),
-              ),
-              const ListTile(
-                title: Text("Help "),
-                leading: Icon(Icons.help),
-              ),
-              const ListTile(
-                title: Text("LOGOUT "),
-                leading: Icon(Icons.login_outlined),
-              ),
-            ],
-          ),
-        ),
-
-        //endDrawer: Drawer(), modier laa position de drawer
-        body: Center(
-          child: Container(
-            padding: EdgeInsets.all(10),
-            child: ElevatedButton(
-              onPressed: () {
-                scafoldkey.currentState!.openDrawer();
-              },
-              child: Text("open Drawer"),
+    return DefaultTabController(
+        length:
+            2, // cette nombre est identique au nombre de  whidget tabBar View
+        child: Scaffold(
+            appBar: AppBar(
+              title: Text("Home Page"),
             ),
-          ),
-        ));
+            drawer: Drawer(),
+            body: TabBarView(
+              children: [
+                Container(
+                  width: double.infinity,
+                  color: Colors.red,
+                  child: Column(children: [
+                    Text("Text 1"),
+                    Text("Text 2"),
+                    Text("Text 3"),
+                    Text("Text 2"),
+                  ]),
+                ),
+                Container(
+                  width: double.infinity,
+                  color: Colors.blue,
+                  child: Column(children: [
+                    Text("Text 3"),
+                    Text("Text 4"),
+                    Text("Text 5"),
+                    Text("Text 6"),
+                  ]),
+                ),
+              ],
+            )));
   }
 }
-//leading et drawer ne marche pas ensemble
-//endDrawer elle est utulisser pour modifier la position de drawer
